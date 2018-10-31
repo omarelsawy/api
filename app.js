@@ -6,7 +6,8 @@ const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/users');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/nodekb' , { useNewUrlParser: true });
+mongoose.connect('mongodb://abc123:abc123@ds145563.mlab.com:45563/node_api' , { useNewUrlParser: true });
+
 let db = mongoose.connection;
 
 app.use('/uploads' , express.static('uploads'));
