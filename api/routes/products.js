@@ -43,10 +43,10 @@ router.get('/' , (req,res,next)=>{
             name: doc.name,
             price: doc.price,
             id: doc._id,
-            productImage: doc.productImage,
+            productImage: req.get('host')+'/'+doc.productImage,
             request: {
               type: 'get',
-              url: 'http://localhost:3000/products/'+doc._id
+              url: req.get('host')+'/products/'+doc._id
             }
           }
         })
