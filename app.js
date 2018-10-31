@@ -22,6 +22,9 @@ app.use((req , res , next)=>{
    next();
 });
 
+app.get('/',(req, res) => {
+   res.redirect('/products');
+});
 app.use('/products' , productRoutes);
 app.use('/orders' , orderRoutes);
 app.use('/users' , userRoutes);

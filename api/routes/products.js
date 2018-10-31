@@ -37,6 +37,51 @@ router.get('/' , (req,res,next)=>{
   .exec()
   .then(docs=>{
       const response = {
+        helper: {
+          get: {
+            orders: {
+              url: '/orders',
+              headers: {
+                token: 'required'
+              }
+            },
+            product: '/products/productId'
+          },
+          post: {
+            products: {
+              url: '/products',
+              keys: {
+                name: 'required',
+                price: 'required',
+                productImage: 'optional'
+              },
+              headers: {
+                token: 'required'
+              }
+            },
+            orders:{
+              url: '/orders',
+              keys: {
+                productsId: 'required',
+                quantity: 'required'
+              } 
+            },
+            signUp: {
+              url: '/users/signup',
+              keys: {
+                email: 'required',
+                password: 'required'
+              }
+            },
+            login: {
+              url: '/users/login',
+              keys: {
+                email: 'required',
+                password: 'required'
+              }
+            }
+          }
+        },
         count: docs.length,
         products: docs.map(doc=>{
           return {
