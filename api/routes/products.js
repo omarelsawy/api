@@ -67,12 +67,20 @@ router.get('/:id' , (req,res,next)=>{
 });
 
 router.post('/' , checkAuth , upload.single('productImage') , (req,res,next)=>{
-  //console.log(req.file);
-    const product = new Product({
-    	name: req.body.name,
-      price: req.body.price,
-      productImage: req.file.path
+
+    if (req.file !== undefined) {
+    var product = new Product({
+    name: req.body.name,
+    price: req.body.price,
+    productImage: req.file.path
     });
+    }else{
+    var product = new Product({
+      name: req.body.name,
+      price: req.body.price
+    });
+    }
+    
     product.save()
     .then(result => {
     	res.json({
